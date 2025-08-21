@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
+// Base class
 class Character {
     String name;
     
+    // Constructor
     Character(String name) {
         this.name = name;
     }
@@ -13,7 +17,7 @@ class Character {
 // Single inheritance
 class Warrior extends Character {
     Warrior(String name) {
-        super(name);
+        super(name);  // calling base class constructor
     }
     
     void attack() {
@@ -21,7 +25,7 @@ class Warrior extends Character {
     }
 }
 
-// Multi-level inheritance
+// Multilevel inheritance
 class EliteWarrior extends Warrior {
     EliteWarrior(String name) {
         super(name);
@@ -31,9 +35,18 @@ class EliteWarrior extends Warrior {
         System.out.println(name + " performs a special attack!");
     }
 }
+
 public class Main {
     public static void main(String[] args) {
-        EliteWarrior ew = new EliteWarrior("GOJO");
+        Scanner sc = new Scanner(System.in);
+
+        // Taking input dynamically
+        System.out.print("Enter character name: ");
+        String cname = sc.nextLine();
+
+        EliteWarrior ew = new EliteWarrior(cname);
+
+        // Calling inherited methods
         ew.walk();
         ew.attack();
         ew.specialAttack();

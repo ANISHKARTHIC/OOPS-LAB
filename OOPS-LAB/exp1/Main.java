@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Student {
     String name;
     int rollNumber;
@@ -5,13 +7,26 @@ class Student {
     int total;
     float average;
     char grade;
-    void inputDetails(String studentName, int roll, int m1, int m2, int m3) {
-        name = studentName;
-        rollNumber = roll;
-        mark1 = m1;
-        mark2 = m2;
-        mark3 = m3;
+
+    void inputDetails() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Student Name: ");
+        name = sc.nextLine();
+
+        System.out.print("Enter Roll Number: ");
+        rollNumber = sc.nextInt();
+
+        System.out.print("Enter Mark 1: ");
+        mark1 = sc.nextInt();
+
+        System.out.print("Enter Mark 2: ");
+        mark2 = sc.nextInt();
+
+        System.out.print("Enter Mark 3: ");
+        mark3 = sc.nextInt();
     }
+
     void calculateTotal() {
         total = mark1 + mark2 + mark3;
         average = total / 3.0f;
@@ -26,7 +41,9 @@ class Student {
         else
             grade = 'F';
     }
+
     void displayResult() {
+        System.out.println("\n===== Student Result =====");
         System.out.println("Student Name : " + name);
         System.out.println("Roll Number  : " + rollNumber);
         System.out.println("Marks        : " + mark1 + ", " + mark2 + ", " + mark3);
@@ -36,13 +53,12 @@ class Student {
     }
 }
 
-
-public class StudentResult {
+public class Main {
     public static void main(String[] args) {
         Student s1 = new Student();
 
-        s1.inputDetails("Anish Karthic", 110, 85, 98, 92);
-        s1.calculateTotal();
-        s1.displayResult();
+        s1.inputDetails();     // user enters data
+        s1.calculateTotal();   // calculate result
+        s1.displayResult();    // display result
     }
 }
